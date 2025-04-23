@@ -23,7 +23,7 @@ jobs:
       run: pip install pylint
 
     - name: Run Pylint
-      run: pylint calculator.py
+      run: pylint calculator.py --fail-under=6.0
 
     - name: Run Unit Tests
       run: python -m unittest test_calculator.py
