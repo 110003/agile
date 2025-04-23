@@ -1,3 +1,7 @@
+"""
+calculator.py - A simple calculator app that performs operations based on environment variables.
+"""
+
 def add(a, b):
     """Return the sum of a and b."""
     return a + b
