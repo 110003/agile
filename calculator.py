@@ -1,3 +1,7 @@
+"""
+Simple calculator module that performs basic operations using environment variables.
+"""
+
 import os
 
 def add(a, b):
