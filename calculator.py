@@ -1,34 +1,35 @@
-"""
-Simple Calculator: Performs basic arithmetic operations
-including addition, subtraction, multiplication, and division.
-"""
+import os
+
 def add(a, b):
-    """Returns the sum of a and b."""
     return a + b
 
 def subtract(a, b):
-    """Returns the result of a - b."""
     return a - b
 
 def multiply(a, b):
-    """Returns the product of a and b."""
     return a * b
 
 def divide(a, b):
-    """Returns the result of a / b, or an error if dividing by zero."""
-    if b == 0:
-        return "Error! Division by zero."
-    return a / b
+    return a / b if b != 0 else "Cannot divide by zero"
 
 def main():
-    """Main function to execute the calculator operations."""
     print("Simple Calculator")
-    a = float(input("Enter first number: "))
-    b = float(input("Enter second number: "))
-    print(f"Addition: {add(a, b)}")
-    print(f"Subtraction: {subtract(a, b)}")
-    print(f"Multiplication: {multiply(a, b)}")
-    print(f"Division: {divide(a, b)}")
+    a = float(os.getenv("FIRST_NUMBER", 0))
+    b = float(os.getenv("SECOND_NUMBER", 0))
+    operation = os.getenv("OP", "add").lower()
+
+    if operation == "add":
+        result = add(a, b)
+    elif operation == "subtract":
+        result = subtract(a, b)
+    elif operation == "multiply":
+        result = multiply(a, b)
+    elif operation == "divide":
+        result = divide(a, b)
+    else:
+        result = "Invalid operation"
+
+    print(f"Result: {result}")
 
 if __name__ == "__main__":
     main()
