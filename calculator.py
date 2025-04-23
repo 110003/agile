@@ -1,39 +1,35 @@
-"""
-Simple calculator module that performs basic operations using environment variables.
-"""
-
-import os
-
 def add(a, b):
+    """Return the sum of a and b."""
     return a + b
 
 def subtract(a, b):
+    """Return the difference of a and b."""
     return a - b
 
 def multiply(a, b):
+    """Return the product of a and b."""
     return a * b
 
 def divide(a, b):
-    return a / b if b != 0 else "Cannot divide by zero"
+    """Return the quotient of a divided by b."""
+    return a / b
 
 def main():
-    print("Simple Calculator")
-    a = float(os.getenv("FIRST_NUMBER", 0))
-    b = float(os.getenv("SECOND_NUMBER", 0))
-    operation = os.getenv("OP", "add").lower()
+    """Main function to perform the operation based on environment variables."""
+    a = int(os.getenv("FIRST_NUMBER", "0"))
+    b = int(os.getenv("SECOND_NUMBER", "0"))
+    op = os.getenv("OP", "add")
 
-    if operation == "add":
-        result = add(a, b)
-    elif operation == "subtract":
-        result = subtract(a, b)
-    elif operation == "multiply":
-        result = multiply(a, b)
-    elif operation == "divide":
-        result = divide(a, b)
+    if op == "add":
+        print(add(a, b))
+    elif op == "sub":
+        print(subtract(a, b))
+    elif op == "mul":
+        print(multiply(a, b))
+    elif op == "div":
+        print(divide(a, b))
     else:
-        result = "Invalid operation"
-
-    print(f"Result: {result}")
+        print("Invalid operation")
 
 if __name__ == "__main__":
     main()
